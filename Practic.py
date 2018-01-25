@@ -188,9 +188,3 @@ def xor_uncipher(cipher_text, key):
 
 cipher_text = xor_cipher('hello world', 10)
 xor_uncipher(cipher_text, 10)
-
-
-
-
-
-
