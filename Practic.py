@@ -1,16 +1,4 @@
-'''
-
-
-
-Правильная дата (7)
-Написать функцию date, принимающую 3 аргумента — день, месяц и год. Вернуть True, если такая дата есть в
-нашем календаре, и False иначе.
-XOR-шифрование (8)
-Написать функцию XOR_cipher, принимающая 2 аргумента: строку, которую нужно зашифровать, и ключ шифрования, которая
- возвращает строку,
-зашифрованную путем применения функции XOR (^) над символами строки с ключом. Написать также функцию XOR_uncipher,
- которая по зашифрованной строке и ключу восстанавливает исходную строку.
-'''
+#coding: utf-8
 
 import random
 
@@ -150,3 +138,59 @@ def is_prime(number):
 
 
 print(is_prime(random.randint(0, 1000)))
+
+# задание№7 Правильная дата (7)
+# Написать функцию date, принимающую 3 аргумента — день, месяц и год. Вернуть True, если такая дата есть в
+# нашем календаре, и False иначе.
+
+from datetime import date
+
+
+def date_1(day, month, year):
+    try:
+        (date(int(year), int(month), int(day)))
+        return True
+    except ValueError:
+        return False
+
+
+currentdate = input('Введите любую дату для проверки в формате: dd.mm.yyyy: ')
+day, month, year = currentdate.split('.')
+print(date_1(day, month, year))
+
+
+# Задание№8 XOR-шифрование (8)
+# Написать функцию XOR_cipher, принимающая 2 аргумента: строку, которую нужно зашифровать, и ключ шифрования, которая
+#  возвращает строку,
+# зашифрованную путем применения функции XOR (^) над символами строки с ключом. Написать также функцию XOR_uncipher,
+#  которая по зашифрованной строке и ключу восстанавливает исходную строку.
+
+
+def xor_cipher(text, key):
+    cipher_text = ''
+    for i in text:
+        try:
+            cipher_text += chr(ord(i) ^ ord(key))
+        except TypeError:
+            cipher_text += chr(ord(i) ^ key)
+    print(cipher_text)
+    return cipher_text
+
+
+def xor_uncipher(cipher_text, key):
+    uncipher_text = ''
+    for i in cipher_text :
+        try:
+            uncipher_text += chr(ord(i) ^ ord(key))
+        except TypeError:
+            uncipher_text += chr(ord(i) ^ key)
+    print(uncipher_text)
+
+cipher_text = xor_cipher('hello world', 10)
+xor_uncipher(cipher_text, 10)
+
+
+
+
+
+
